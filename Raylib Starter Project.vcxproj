@@ -134,6 +134,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Consumable.cpp" />
+    <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="CraftingMaterial.cpp" />
     <ClCompile Include="main.cpp" />
@@ -144,6 +145,7 @@
     <ClInclude Include="Armor.h" />
     <ClInclude Include="ArmorType.h" />
     <ClInclude Include="Consumable.h" />
+    <ClInclude Include="GameManager.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="CraftingMaterial.h" />
     <ClInclude Include="IStackable.h" />
