@@ -44,7 +44,7 @@ public:
     bool GetClickedBool();
     void SetClickedBool(bool click);
     void SetHoveredBool(bool hover);
-    void SetTexture(Texture2D& texture, float size);
+    void SetTexture(Texture2D* texture, float size);
     void SetText(std::string text);
     void SetBorderThickness(float thickness);
     void ResetTimer();

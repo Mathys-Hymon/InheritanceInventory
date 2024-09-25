@@ -68,6 +68,7 @@ void Inventory::AddItemToInventory(Item* itemToAdd)
 		}
 		if (mItemStorage[i]->GetName() == "") {
 			mItemStorage[i] = itemToAdd;
+			mInventorySlots[i].SetTexture(itemToAdd->GetImage(), 1);
 			RefreshInventory();
 		}
 	}

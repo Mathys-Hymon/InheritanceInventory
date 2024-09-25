@@ -48,9 +48,9 @@ ItemTag Item::GetTag()
     return ItemTag();
 }
 
-Texture2D Item::GetImage()
+Texture2D* Item::GetImage()
 {
-    return Texture2D();
+    return &mImage;
 }
 
 int Item::GetAmount()

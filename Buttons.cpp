@@ -138,11 +138,11 @@ void Buttons::SetHoveredBool(bool hover)
 	mIsHovered = hover;
 }
 
-void Buttons::SetTexture(Texture2D& texture, float size)
+void Buttons::SetTexture(Texture2D* texture, float size)
 {
 	mSeeText = false;
 	mTextureSize = size;
-	mTexture = texture;
+	mTexture = *texture;
 }
 
 void Buttons::SetText(std::string text)

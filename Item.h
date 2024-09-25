@@ -18,7 +18,7 @@ public:
 	std::string GetDesc();
 	int GetPrice();
 	ItemTag GetTag();
-	Texture2D GetImage();
+	Texture2D* GetImage();
 	int GetAmount();
 
 protected:
