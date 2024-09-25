@@ -6,6 +6,7 @@
 class Inventory
 {
 public:
+	Inventory();
 	Inventory(int maxSlots, int maxItemPerStack);
 	~Inventory();
 	void Update();
@@ -14,6 +15,7 @@ public:
 private:
 	int mMaxSlots;
 	int mMaxItemPerStack;
+	Rectangle* mInventorySlots;
 	Item** mItemStorage;
 };
 
