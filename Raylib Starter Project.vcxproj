@@ -135,14 +135,20 @@
   <ItemGroup>
     <ClCompile Include="Consumable.cpp" />
     <ClCompile Include="Inventory.cpp" />
+    <ClCompile Include="CraftingMaterial.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Melee.cpp" />
     <ClCompile Include="Ranged.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Armor.h" />
+    <ClInclude Include="ArmorType.h" />
     <ClInclude Include="Consumable.h" />
     <ClInclude Include="Inventory.h" />
+    <ClInclude Include="CraftingMaterial.h" />
+    <ClInclude Include="IStackable.h" />
+    <ClInclude Include="originLocation.h" />
+    <ClInclude Include="PotionEffect.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Melee.h" />
     <ClInclude Include="Ranged.h" />

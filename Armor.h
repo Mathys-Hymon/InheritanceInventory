@@ -1,12 +1,6 @@
 #pragma once
 #include "Item.h"
-
-enum class ClassType
-{
-    light,
-    heavy,
-    normal,
-};
+#include "ArmorType.h"
 
 class Armor :
     public Item
