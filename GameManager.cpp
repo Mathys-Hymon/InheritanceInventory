@@ -1,5 +1,7 @@
 #include "GameManager.h"
 
+#include <iostream>
+
 GameManager::GameManager()
 {
 	mShowInventory = true;
@@ -16,6 +18,9 @@ GameManager::~GameManager()
 
 void GameManager::Update()
 {
+	if (IsKeyPressed(KEY_TAB)) {
+		(mShowInventory == false) ? mShowInventory=true : mShowInventory=false;
+	}
 	if (mShowInventory) {
 		allInventories[static_cast<int>(inventoryTab)].Update();
 	}
