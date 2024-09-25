@@ -9,7 +9,7 @@ public:
 	Item(std::string name, Texture2D image, std::string description, float weight, float price, int amount);
 	~Item();
 	void Drop(int quantity);
-	void Inspect();
+	virtual void Inspect();
 	void Sell();
 	void Favorite();
 

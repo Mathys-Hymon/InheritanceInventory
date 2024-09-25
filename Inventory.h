@@ -1,6 +1,7 @@
 #pragma once
 #include "raylib.h"
 #include "Item.h"
+#include "IStackable.h"
 
 class Inventory
 {

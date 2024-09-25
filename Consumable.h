@@ -1,11 +1,13 @@
 #pragma once
 #include "PotionEffect.h"
+#include "IStackable.h"
 
-class Consumable
+class Consumable : public IStackable
 {
 public:
 	Consumable();
 	~Consumable();
+	void Add(int amount);
 	void Use();
 protected:
 	EffectType mEffect;

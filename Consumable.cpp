@@ -8,6 +8,11 @@ Consumable::~Consumable()
 {
 }
 
+void Consumable::Add(int amount)
+{
+
+}
+
 void Consumable::Use()
 {
 }
