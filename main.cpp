@@ -1,8 +1,5 @@
 #include "raylib.h"
 #include <iostream>
-#include "GameManager.h"
-
-GameManager mGameManager;
 
 void Start();
 void Update();
@@ -12,7 +9,7 @@ void Unload();
 int main() {
     Start();
 
-    while (!WindowShouldClose() && !mGameManager.GameShouldClose()) {
+    while (!WindowShouldClose()) {
 
         Update();
         Draw();
@@ -24,27 +21,24 @@ int main() {
 
 void Start()
 {
-    InitWindow(1000, 850, "brick breaker");
-    SetTargetFPS(60);
-    mGameManager = GameManager();
-    mGameManager.Load();
+    //InitWindow(1000, 850, "brick breaker");
+    //SetTargetFPS(60);
+
+
 }
 
 void Update()
 {
-    mGameManager.Update();
 }
 
 void Draw()
 {
-    BeginDrawing();
-    mGameManager.Draw();
+  /*  BeginDrawing();
     ClearBackground(BLUE);
-    EndDrawing();
+    EndDrawing();*/
 }
 
 void Unload()
 {
-    CloseWindow();
-    mGameManager.Unload();
+    //CloseWindow();
 }
