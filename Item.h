@@ -6,6 +6,7 @@
  class Item
 {
 public:
+	Item();
 	Item(std::string name, Texture2D image, std::string description, float weight, float price, int amount);
 	~Item();
 	void Drop(int quantity);

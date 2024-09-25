@@ -1,5 +1,12 @@
 #include "Inventory.h"
 
+Inventory::Inventory()
+{
+	mMaxSlots = 0;
+	mItemStorage = new Item*[0];
+	mMaxItemPerStack = 0;
+}
+
 Inventory::Inventory(int maxSlots, int maxItemPerStack)
 {
 	mMaxSlots = maxSlots;
@@ -15,12 +22,15 @@ void Inventory::Update()
 {
 
 	for (int i = 0; i < mMaxSlots; i++) {
-		mItemStorage[i]->Inspect();
 	}
 }
 
 void Inventory::Draw()
 {
+	DrawRectangle(GetScreenWidth() / 2 - 450, GetScreenHeight() / 2 - 300, 900, 600, WHITE);
+	for (int i = 0; i < mMaxSlots; i++) {
+
+	}
 }
 
 void Inventory::AddItemToInventory(Item* itemToAdd)

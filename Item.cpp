@@ -1,5 +1,9 @@
 #include "Item.h"
 
+Item::Item()
+{
+}
+
 Item::Item(std::string name, Texture2D image, std::string description, float weight, float price, int amount)
 {
 }

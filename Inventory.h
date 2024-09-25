@@ -6,6 +6,7 @@
 class Inventory
 {
 public:
+	Inventory();
 	Inventory(int maxSlots, int maxItemPerStack);
 	~Inventory();
 	void Update();
