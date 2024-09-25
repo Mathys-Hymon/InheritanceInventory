@@ -137,9 +137,11 @@
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="CraftingMaterial.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Melee.cpp" />
     <ClCompile Include="Ranged.cpp" />
+    <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Armor.h" />
@@ -149,6 +151,7 @@
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="CraftingMaterial.h" />
     <ClInclude Include="IStackable.h" />
+    <ClInclude Include="ItemTag.h" />
     <ClInclude Include="originLocation.h" />
     <ClInclude Include="PotionEffect.h" />
     <ClInclude Include="Item.h" />
