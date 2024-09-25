@@ -133,6 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Buttons.cpp" />
     <ClCompile Include="Consumable.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Inventory.cpp" />
@@ -146,6 +147,7 @@
   <ItemGroup>
     <ClInclude Include="Armor.h" />
     <ClInclude Include="ArmorType.h" />
+    <ClInclude Include="Buttons.h" />
     <ClInclude Include="Consumable.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="IEquippable.h" />
