@@ -26,6 +26,7 @@ void Start()
 {
     InitWindow(1080, 720, "Inventory System");
     SetTargetFPS(60);
+    gm.Load();
 }
 
 void Update()
@@ -43,5 +44,6 @@ void Draw()
 
 void Unload()
 {
+    gm.Unload();
     CloseWindow();
 }

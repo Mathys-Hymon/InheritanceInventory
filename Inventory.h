@@ -2,6 +2,7 @@
 #include "raylib.h"
 #include "Item.h"
 #include "IStackable.h"
+#include "Buttons.h"
 
 class Inventory
 {
@@ -12,10 +13,12 @@ public:
 	void Update();
 	void Draw();
 	void AddItemToInventory(Item* itemToAdd);
+	void Unload();
+	void RefreshInventory();
 private:
 	int mMaxSlots;
 	int mMaxItemPerStack;
-	Rectangle* mInventorySlots;
+	Buttons* mInventorySlots;
 	Item** mItemStorage;
 };
 

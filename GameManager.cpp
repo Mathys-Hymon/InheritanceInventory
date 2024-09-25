@@ -16,6 +16,13 @@ GameManager::~GameManager()
 {
 }
 
+void GameManager::Load()
+{
+	for (int i = 0; i < 4; i++) {
+		allInventories[i].RefreshInventory();
+	}
+}
+
 void GameManager::Update()
 {
 	if (IsKeyPressed(KEY_TAB)) {
@@ -31,4 +38,11 @@ void GameManager::Draw()
 	if (mShowInventory) {
 		allInventories[static_cast<int>(inventoryTab)].Draw();
 	}	
+}
+
+void GameManager::Unload()
+{
+	for (int i = 0; i < 4; i++) {
+		allInventories[i].Unload();
+	}
 }
