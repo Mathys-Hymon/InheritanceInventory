@@ -5,6 +5,7 @@ class Melee :
 {
 public:
     void Parry();
+
 protected:
     float mAttackRange;
 };

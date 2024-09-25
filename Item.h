@@ -21,4 +21,3 @@ protected:
 	float mPrice;
 	int mAmount;
 };
-
