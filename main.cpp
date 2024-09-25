@@ -24,10 +24,8 @@ int main() {
 
 void Start()
 {
-    InitWindow(1080, 720, "brick breaker");
+    InitWindow(1080, 720, "Inventory System");
     SetTargetFPS(60);
-
-
 }
 
 void Update()

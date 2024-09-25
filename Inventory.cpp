@@ -1,4 +1,5 @@
 #include "Inventory.h"
+#include <iostream>
 
 Inventory::Inventory()
 {
@@ -15,9 +16,16 @@ Inventory::Inventory(int maxSlots, int maxItemPerStack)
 	mInventorySlots = new Rectangle[maxSlots];
 	mMaxItemPerStack = maxItemPerStack;
 	int slotsRemaining = maxSlots;
-	for (int j = 0; j < maxSlots / 10; j++) {
-		int colones = slotsRemaining > 10? 10 : slotsRemaining;
-		for (int i = 0; i < colones; i++) {
+	int row = 0;
+	if (mMaxSlots % 10 > 0) {
+		row = mMaxSlots / 10 + 1;
+	}
+	else {
+		row = mMaxSlots / 10;
+	}
+	for (int j = 0; j < row; j++) {
+		int columns = (slotsRemaining >= 10) ? columns = 10 : columns = slotsRemaining;
+		for (int i = 0; i < columns; i++) {
 			float spaceX = 90 * i;
 			float spaceY = 90 * j;
 			mInventorySlots[maxSlots-slotsRemaining] = {spaceX + (190/2), spaceY + (424/2), 80, 80};
