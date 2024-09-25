@@ -29,8 +29,14 @@ void Inventory::AddItemToInventory(Item* itemToAdd)
 		if (mItemStorage[i]->GetName() == itemToAdd->GetName()) {
 			if (mItemStorage[i]->GetAmount() < mMaxItemPerStack) {
 				IStackable* itemStackable = dynamic_cast<IStackable*>(mItemStorage[i]);
-				mItemStorage[i]->Add();
+				if (itemStackable != nullptr) {
+					itemStackable->Add(1);
+					break;
+				}
 			}
+		}
+		if (mItemStorage[i] == nullptr) {
+			mItemStorage[i] = itemToAdd;
 		}
 	}
 }
