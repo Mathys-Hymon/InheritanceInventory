@@ -148,6 +148,7 @@
     <ClInclude Include="ArmorType.h" />
     <ClInclude Include="Consumable.h" />
     <ClInclude Include="GameManager.h" />
+    <ClInclude Include="IEquippable.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="CraftingMaterial.h" />
     <ClInclude Include="IStackable.h" />
