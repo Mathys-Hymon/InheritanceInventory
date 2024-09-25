@@ -48,3 +48,8 @@ Texture2D Item::GetImage()
 {
     return Texture2D();
 }
+
+int Item::GetAmount()
+{
+    return mAmount;
+}

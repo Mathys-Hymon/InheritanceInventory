@@ -18,6 +18,7 @@ public:
 	int GetPrice();
 	ItemTag GetTag();
 	Texture2D GetImage();
+	int GetAmount();
 
 protected:
 	std::string mName;
@@ -26,4 +27,5 @@ protected:
 	ItemTag mTag;
 	float mWeight;
 	float mPrice;
+	int mAmount;
 };
