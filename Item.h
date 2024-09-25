@@ -1,5 +1,6 @@
 #pragma once
 #include "raylib.h"
+#include "ItemTag.h"
 #include <iostream>
 
  class Item
@@ -12,12 +13,17 @@ public:
 	void Sell();
 	void Favorite();
 
+	std::string GetName();
+	std::string GetDesc();
+	int GetPrice();
+	ItemTag GetTag();
+	Texture2D GetImage();
+
 protected:
 	std::string mName;
 	Texture2D mImage;
 	std::string mDescription;
-	std::string mTag;
+	ItemTag mTag;
 	float mWeight;
 	float mPrice;
-	int mAmount;
 };
