@@ -15,6 +15,7 @@ public:
 private:
 	int mMaxSlots;
 	int mMaxItemPerStack;
+	Rectangle* mInventorySlots;
 	Item** mItemStorage;
 };
 
