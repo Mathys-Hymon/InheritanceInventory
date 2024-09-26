@@ -22,13 +22,13 @@ private:
 	Inventory mAllInventories[4];
 	Buttons mInventoryButtons[4];
 
-	Item* mAllItems[9];
+	Item* mAllItems[14];
 
 	Armor* mArmorItems[3];
 	Melee* mSword;
 	Ranged* mBow;
-	Consumable* mConsumableItems[2];
-	CraftingMaterial* mCraftingItems[2];
+	Consumable* mConsumableItems[4];
+	CraftingMaterial* mCraftingItems[5];
 
 	int mButtonIndex;
 };
