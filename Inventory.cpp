@@ -7,9 +7,10 @@ Inventory::Inventory()
 	mItemStorage = new Item*[0];
 	mInventorySlots = new Buttons[0];
 	mMaxItemPerStack = 0;
+	mInventoryTag = ItemTag::armor;
 }
 
-Inventory::Inventory(int maxSlots, int maxItemPerStack)
+Inventory::Inventory(int maxSlots, int maxItemPerStack, ItemTag tag)
 {
 	mMaxSlots = maxSlots;
 	mItemStorage = new Item*[maxSlots];
@@ -33,6 +34,7 @@ Inventory::Inventory(int maxSlots, int maxItemPerStack)
 			slotsRemaining -= 1;
 		}
 	}
+	mInventoryTag = tag;
 }
 
 Inventory::~Inventory()
@@ -91,4 +93,9 @@ void Inventory::RefreshInventory()
 			mInventorySlots[i].SetEnable(true);
 		}
 	}
+}
+
+ItemTag Inventory::GetInventoryTag()
+{
+	return mInventoryTag;
 }
