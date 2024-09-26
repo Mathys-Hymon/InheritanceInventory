@@ -24,20 +24,20 @@ GameManager::~GameManager()
 
 void GameManager::Load()
 {
-	mArmorItems[0] = new Armor("Draconic Helmet", LoadTexture("resources/textures/helmet.png"), "Test", 10, 10, 1, ItemTag::armor, 21, ClassType::heavy);
-	mArmorItems[1] = new Armor("BBBABABABAB", LoadTexture("resources/textures/jacket.png"), "bb", 10, 10, 1, ItemTag::armor, 21, ClassType::heavy);
-	mArmorItems[2] = new Armor("AAAAAAAAAAA", LoadTexture("resources/textures/pants.png"), "dd", 10, 10, 1, ItemTag::armor, 21, ClassType::heavy);
-	mSword = new Melee("Test", LoadTexture("resources/textures/catana.png"), "aaa", 2, 5, 1, ItemTag::weapon, 2, 3, 5);
-	mBow = new Ranged("gagaga", LoadTexture("resources/textures/gun.png"), "non mais ", 4, 7, 1, 12, ItemTag::weapon, 2, 5);
-	mConsumableItems[0] = new Consumable("potion", LoadTexture("resources/textures/soup.png"), ".....", 77, 65, 50, ItemTag::consumable, EffectType::speed);
-	mConsumableItems[1] = new Consumable("potion dla mor", LoadTexture("resources/textures/sushi.png"), "..ekhgukje...", 3, 2, 1, ItemTag::consumable, EffectType::heal);
-	mConsumableItems[2] = new Consumable("potion dla mor", LoadTexture("resources/textures/sushi.png"), "..ekhgukje...", 3, 2, 1, ItemTag::consumable, EffectType::heal);
-	mConsumableItems[3] = new Consumable("potion dla mor", LoadTexture("resources/textures/sushi.png"), "..ekhgukje...", 3, 2, 1, ItemTag::consumable, EffectType::heal);
-	mCraftingItems[0] = new CraftingMaterial("metal", LoadTexture("resources/textures/leather.png"), "j'en ai marre", 2, 3, 1, ItemTag::craftingItem, originLocation::mountains);
-	mCraftingItems[1] = new CraftingMaterial("wood", LoadTexture("resources/textures/star.png"), "aled", 2, 3, 1, ItemTag::craftingItem, originLocation::mountains);
-	mCraftingItems[2] = new CraftingMaterial("wood", LoadTexture("resources/textures/star.png"), "aled", 2, 3, 1, ItemTag::craftingItem, originLocation::mountains);
-	mCraftingItems[3] = new CraftingMaterial("wood", LoadTexture("resources/textures/star.png"), "aled", 2, 3, 1, ItemTag::craftingItem, originLocation::mountains);
-	mCraftingItems[4] = new CraftingMaterial("wood", LoadTexture("resources/textures/star.png"), "aled", 2, 3, 1, ItemTag::craftingItem, originLocation::mountains);
+	mArmorItems[0] = new Armor("Draconic Helmet", LoadTexture("resources/textures/helmet.png"), "Lorem Ipsum", 10, 10, 1, ItemTag::armor, 21, ClassType::heavy);
+	mArmorItems[1] = new Armor("Sacha's Jacket", LoadTexture("resources/textures/jacket.png"), "This is a super Jacket", 10, 10, 1, ItemTag::armor, 21, ClassType::heavy);
+	mArmorItems[2] = new Armor("Leggings", LoadTexture("resources/textures/pants.png"), "Good against Poison", 10, 10, 1, ItemTag::armor, 21, ClassType::heavy);
+	mSword = new Melee("Malenia's Sword", LoadTexture("resources/textures/catana.png"), "Malenia is really hard to beat", 2, 5, 1, ItemTag::weapon, 2, 3, 5);
+	mBow = new Ranged("Random Gun", LoadTexture("resources/textures/gun.png"), "Piou Piou", 4, 7, 1, 12, ItemTag::weapon, 2, 5);
+	mConsumableItems[0] = new Consumable("Speed Soup", LoadTexture("resources/textures/soup.png"), "Miam", 77, 65, 50, ItemTag::consumable, EffectType::speed);
+	mConsumableItems[1] = new Consumable("Sushi", LoadTexture("resources/textures/sushi.png"), "Best dish of the world ?", 3, 2, 1, ItemTag::consumable, EffectType::heal);
+	mConsumableItems[2] = new Consumable("Sushi", LoadTexture("resources/textures/sushi.png"), "Best dish of the world ?", 3, 2, 1, ItemTag::consumable, EffectType::heal);
+	mConsumableItems[3] = new Consumable("Sushi", LoadTexture("resources/textures/sushi.png"), "Best dish of the world ?", 3, 2, 1, ItemTag::consumable, EffectType::heal);
+	mCraftingItems[0] = new CraftingMaterial("Leather", LoadTexture("resources/textures/leather.png"), "Usefull to make armors", 2, 3, 1, ItemTag::craftingItem, originLocation::mountains);
+	mCraftingItems[1] = new CraftingMaterial("Star Fragment", LoadTexture("resources/textures/star.png"), "Easy to craft a beacon now", 2, 3, 1, ItemTag::craftingItem, originLocation::mountains);
+	mCraftingItems[2] = new CraftingMaterial("Star Fragment", LoadTexture("resources/textures/star.png"), "Easy to craft a beacon now", 2, 3, 1, ItemTag::craftingItem, originLocation::mountains);
+	mCraftingItems[3] = new CraftingMaterial("Star Fragment", LoadTexture("resources/textures/star.png"), "Easy to craft a beacon now", 2, 3, 1, ItemTag::craftingItem, originLocation::mountains);
+	mCraftingItems[4] = new CraftingMaterial("Star Fragment", LoadTexture("resources/textures/star.png"), "Easy to craft a beacon now", 2, 3, 1, ItemTag::craftingItem, originLocation::mountains);
 
 	mAllItems[0] = mArmorItems[0];
 	mAllItems[1] = mArmorItems[1];

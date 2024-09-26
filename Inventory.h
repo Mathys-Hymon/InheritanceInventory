@@ -24,5 +24,6 @@ private:
 	Buttons* mInventorySlots;
 	Item** mItemStorage;
 	ItemTag mInventoryTag;
+	int mShowInfosIndex;
 };
 

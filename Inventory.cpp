@@ -41,6 +41,7 @@ Inventory::Inventory(int maxSlots, int maxItemPerStack, ItemTag tag)
 	}
 
 	mInventoryTag = tag;
+	mShowInfosIndex = 0;
 }
 
 Inventory::~Inventory()
@@ -51,12 +52,17 @@ void Inventory::Update()
 {
 	for (int i = 0; i < mMaxSlots; i++) {
 		mInventorySlots[i].Update();
+		if (mInventorySlots[i].GetClickedBool()) {
+			mInventorySlots[i].SetClickedBool(false);
+			mShowInfosIndex = i;
+		}
 	}
 }
 
 void Inventory::Draw()
 {
 	DrawRectangle(GetScreenWidth() / 2 - 460, GetScreenHeight() / 2 - 300, 920, 600, WHITE);
+	DrawRectangleLinesEx({ 735, 400, 250, 250 }, 4, BLACK);
 	for (int i = 0; i < mMaxSlots; i++) {
 		mInventorySlots[i].Draw();
 		if (mItemStorage[i] != nullptr) {
@@ -65,6 +71,12 @@ void Inventory::Draw()
 			}
 		}
 	}
+	Texture2D texture = *mItemStorage[mShowInfosIndex]->GetImage();
+	texture.width = 250;
+	texture.height = 250;
+	DrawTexture(texture, 735, 400, WHITE);
+	DrawText(mItemStorage[mShowInfosIndex]->GetName().c_str(), 700 - MeasureText(mItemStorage[mShowInfosIndex]->GetName().c_str(), 40), 550, 40, BLACK);
+	DrawText(mItemStorage[mShowInfosIndex]->GetDesc().c_str(), 700 - MeasureText(mItemStorage[mShowInfosIndex]->GetDesc().c_str(), 30), 610, 30, BLACK);
 }
 
 void Inventory::AddItemToInventory(Item* itemToAdd)
