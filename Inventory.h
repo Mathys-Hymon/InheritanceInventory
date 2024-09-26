@@ -26,5 +26,7 @@ private:
 	Item** mItemStorage;
 	ItemTag mInventoryTag;
 	int mShowInfosIndex;
+	Buttons mActionsBtn[4];
+	bool mShowActionBtn;
 };
 

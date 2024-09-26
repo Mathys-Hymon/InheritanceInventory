@@ -30,14 +30,19 @@ Item::~Item()
 
 void Item::Drop(int quantity)
 {
+    if (mAmount > 0) {
+        mAmount -= 1;
+    }
 }
 
 void Item::Inspect()
 {
+
 }
 
 void Item::Sell()
 {
+    Drop(1);
 }
 
 void Item::Favorite()
@@ -51,6 +56,11 @@ void Item::Update()
 void Item::Draw()
 {
     DrawTexture(mImage, 500, 500, WHITE);
+}
+
+void Item::Unload()
+{
+    UnloadTexture(mImage);
 }
 
 

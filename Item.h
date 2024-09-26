@@ -15,6 +15,7 @@ public:
 	void Favorite();
 	void Update();
 	void Draw();
+	void Unload();
 
 	std::string GetName();
 	std::string GetDesc();

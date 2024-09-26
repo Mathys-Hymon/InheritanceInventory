@@ -106,4 +106,7 @@ void GameManager::Unload()
 	for (int i = 0; i < 4; i++) {
 		mAllInventories[i].Unload();
 	}
+	for (int j = 0; j < 14; j++) {
+		mAllItems[j]->Unload();
+	}
 }

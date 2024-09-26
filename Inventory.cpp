@@ -42,6 +42,11 @@ Inventory::Inventory(int maxSlots, int maxItemPerStack, ItemTag tag)
 
 	mInventoryTag = tag;
 	mShowInfosIndex = 0;
+	mActionsBtn[0] = Buttons({ 0, 0, 200, 50 }, WHITE, "Drop", BLACK, 20);
+	mActionsBtn[1] = Buttons({ 0, 0, 200, 50 }, WHITE, "Inspect", BLACK, 20);
+	mActionsBtn[2] = Buttons({ 0, 0, 200, 50 }, WHITE, "Sell", BLACK, 20);
+	mActionsBtn[3] = Buttons({ 0, 0, 200, 50 }, WHITE, "Favorite", BLACK, 20);
+	mShowActionBtn = false;
 }
 
 Inventory::~Inventory()
@@ -54,7 +59,31 @@ void Inventory::Update()
 		mInventorySlots[i].Update();
 		if (mInventorySlots[i].GetClickedBool()) {
 			mInventorySlots[i].SetClickedBool(false);
+			if (mShowInfosIndex == i && mShowActionBtn) {
+				mShowActionBtn = false;
+			}
+			else {
+				mShowActionBtn = true;
+			}
 			mShowInfosIndex = i;
+			for (int j = 0; j < 4; j++) {
+				mActionsBtn[j].SetButtonPosition({ mInventorySlots[i].GetButtonPosition().x, mInventorySlots[i].GetButtonPosition().y + 80 + 50*j});
+			}
+		}
+	}
+	if (mShowActionBtn) {
+		for (int i = 0; i < 4; i++) {
+			mActionsBtn[i].Update();
+		}
+		if (mActionsBtn[0].GetClickedBool()) {
+			mActionsBtn[0].SetClickedBool(false);
+			mItemStorage[mShowInfosIndex]->Drop(1);
+			RefreshInventory();
+		}
+		if (mActionsBtn[2].GetClickedBool()) {
+			mActionsBtn[2].SetClickedBool(false);
+			mItemStorage[mShowInfosIndex]->Sell();
+			RefreshInventory();
 		}
 	}
 }
@@ -71,12 +100,19 @@ void Inventory::Draw()
 			}
 		}
 	}
-	Texture2D texture = *mItemStorage[mShowInfosIndex]->GetImage();
-	texture.width = 250;
-	texture.height = 250;
-	DrawTexture(texture, 735, 400, WHITE);
-	DrawText(mItemStorage[mShowInfosIndex]->GetName().c_str(), 700 - MeasureText(mItemStorage[mShowInfosIndex]->GetName().c_str(), 40), 550, 40, BLACK);
-	DrawText(mItemStorage[mShowInfosIndex]->GetDesc().c_str(), 700 - MeasureText(mItemStorage[mShowInfosIndex]->GetDesc().c_str(), 30), 610, 30, BLACK);
+	if (mItemStorage[mShowInfosIndex] != nullptr) {
+		Texture2D texture = *mItemStorage[mShowInfosIndex]->GetImage();
+		texture.width = 250;
+		texture.height = 250;
+		DrawTexture(texture, 735, 400, WHITE);
+		DrawText(mItemStorage[mShowInfosIndex]->GetName().c_str(), 700 - MeasureText(mItemStorage[mShowInfosIndex]->GetName().c_str(), 40), 550, 40, BLACK);
+		DrawText(mItemStorage[mShowInfosIndex]->GetDesc().c_str(), 700 - MeasureText(mItemStorage[mShowInfosIndex]->GetDesc().c_str(), 30), 610, 30, BLACK);
+	}
+	if (mShowActionBtn) {
+		for (int i = 0; i < 4; i++) {
+			mActionsBtn[i].Draw();
+		}
+	}
 }
 
 void Inventory::AddItemToInventory(Item* itemToAdd)
@@ -112,8 +148,17 @@ void Inventory::Unload()
 void Inventory::RefreshInventory()
 {
 	for (int i = 0; i < mMaxSlots; i++) {
-		auto item = mItemStorage[i];
-		if (item == nullptr){
+		if (mItemStorage[i] != nullptr) {
+			if (mItemStorage[i]->GetAmount() <= 0) {
+				mItemStorage[i] = nullptr;
+				mInventorySlots[i].SetTexture(new Texture2D(), 1);
+				mShowActionBtn = false;
+				continue;
+			}
+		}
+	}
+	for (int i = 0; i < mMaxSlots; i++) {
+		if (mItemStorage[i] == nullptr){
 			mInventorySlots[i].SetEnable(false);
 		}
 		else {
