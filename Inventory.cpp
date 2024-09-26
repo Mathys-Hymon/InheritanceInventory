@@ -168,7 +168,7 @@ void Inventory::RefreshInventory()
 				mItemStorage[i] = nullptr;
 				mInventorySlots[i].SetTexture(new Texture2D(), 1);
 				mShowActionBtn = false;
-				continue;
+				break;
 			}
 		}
 	}
