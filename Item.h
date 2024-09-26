@@ -7,7 +7,7 @@
 {
 public:
 	Item();
-	Item(std::string name, Texture2D image, std::string description, float weight, float price, int amount);
+	Item(std::string name, Texture2D image, std::string description, float weight, float price, int amount, ItemTag tag);
 	~Item();
 	void Drop(int quantity);
 	virtual void Inspect();

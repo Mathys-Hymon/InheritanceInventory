@@ -4,7 +4,8 @@ class Ranged :
     public Weapon
 {
 public:
-    Ranged(std::string name, Texture2D image, std::string description, float weight, float price, int amount, float ammo);
+    Ranged();
+    Ranged(std::string name, Texture2D image, std::string description, float weight, float price, int amount, float damages, ItemTag tag, float attackSpeed, float ammo);
     ~Ranged();
     void Aim();
     void Reload();

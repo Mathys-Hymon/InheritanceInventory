@@ -34,6 +34,12 @@ Inventory::Inventory(int maxSlots, int maxItemPerStack, ItemTag tag)
 			slotsRemaining -= 1;
 		}
 	}
+
+	for (int i = 0; i < maxSlots; i++)
+	{
+		mItemStorage[i] = nullptr;
+	}
+
 	mInventoryTag = tag;
 }
 
@@ -59,19 +65,21 @@ void Inventory::Draw()
 void Inventory::AddItemToInventory(Item* itemToAdd)
 {
 	for (int i = 0; i < mMaxSlots; i++) {
-		if (mItemStorage[i]->GetName() == itemToAdd->GetName()) {
-			if (mItemStorage[i]->GetAmount() < mMaxItemPerStack) {
-				IStackable* itemStackable = dynamic_cast<IStackable*>(mItemStorage[i]);
-				if (itemStackable != nullptr) {
-					itemStackable->Add(1);
-					break;
+		if (mItemStorage[i] != nullptr) {
+			if (mItemStorage[i]->GetName() == itemToAdd->GetName()) {
+				if (mItemStorage[i]->GetAmount() < mMaxItemPerStack) {
+					IStackable* itemStackable = dynamic_cast<IStackable*>(mItemStorage[i]);
+					if (itemStackable != nullptr) {
+						itemStackable->Add(1);
+						break;
+					}
 				}
 			}
-		}
-		if (mItemStorage[i]->GetName() == "") {
-			mItemStorage[i] = itemToAdd;
-			mInventorySlots[i].SetTexture(itemToAdd->GetImage(), 1);
-			RefreshInventory();
+			if (mItemStorage[i] == nullptr) {
+				mItemStorage[i] = itemToAdd;
+				mInventorySlots[i].SetTexture(itemToAdd->GetImage(), 1);
+				RefreshInventory();
+			}
 		}
 	}
 }
@@ -86,7 +94,8 @@ void Inventory::Unload()
 void Inventory::RefreshInventory()
 {
 	for (int i = 0; i < mMaxSlots; i++) {
-		if (mItemStorage[i]->GetName() == "") {
+		auto item = mItemStorage[i];
+		if (item == nullptr){
 			mInventorySlots[i].SetEnable(false);
 		}
 		else {

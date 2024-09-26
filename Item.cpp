@@ -2,19 +2,27 @@
 
 Item::Item()
 {
+    mSize = {0,0};
+    mImage = Texture2D();
+    mName = " ";
+    mDescription = " ";
+    mWeight = 0;
+    mPrice = 0;
+    mAmount = 0;
+    mTag = ItemTag::armor;
 }
 
-Item::Item(std::string name, Texture2D image, std::string description, float weight, float price, int amount)
+Item::Item(std::string name, Texture2D image, std::string description, float weight, float price, int amount, ItemTag tag)
 {
-    ResetPosition();
-    mSize = { (float)image.width, (float)image.height };
+    mSize = { (float)image.width, (float)image.height};
     mImage = image;
     mName = name;
-    mImage = image;
     mDescription = description;
     mWeight = weight;
     mPrice = price;
     mAmount = amount;
+    mTag = tag;
+    ResetPosition();
 }
 
 Item::~Item()
@@ -54,13 +62,13 @@ void Item::Update()
 
 void Item::Draw()
 {
-    DrawTextureEx(mImage, mPosition, 0, 1, WHITE);
+    DrawTexture(mImage, 500, 500, WHITE);
 }
 
 void Item::ResetPosition()
 {
     mPosition.x = GetRandomValue(50, GetScreenWidth() - 50);
-    mPosition.y = -50;
+    mPosition.y = 50;
 }
 
 std::string Item::GetName()

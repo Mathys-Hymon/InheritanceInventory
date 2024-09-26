@@ -7,9 +7,11 @@ class CraftingMaterial :
     public Item, public IStackable
 {
 public :
-    CraftingMaterial(std::string name, Texture2D image, std::string description, float weight, float price, int amount, originLocation originLocation);
+    CraftingMaterial();
+    CraftingMaterial(std::string name, Texture2D image, std::string description, float weight, float price, int amount, ItemTag tag, originLocation originLocation);
     ~CraftingMaterial();
     void Craft();
+    void Add(int amount);
 
 protected:
     originLocation mOriginLoc;
