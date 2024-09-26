@@ -11,6 +11,7 @@ public:
 	Inventory();
 	Inventory(int maxSlots, int maxItemPerStack, ItemTag tag);
 	~Inventory();
+	void Load();
 	void Update();
 	void Draw();
 	void AddItemToInventory(Item* itemToAdd);
@@ -28,5 +29,6 @@ private:
 	int mShowInfosIndex;
 	Buttons mActionsBtn[4];
 	bool mShowActionBtn;
+	Texture2D mFavoriteTexture;
 };
 

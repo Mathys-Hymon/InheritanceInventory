@@ -53,6 +53,13 @@ Inventory::~Inventory()
 {
 }
 
+void Inventory::Load()
+{
+	mFavoriteTexture = LoadTexture("resources/textures/favorite.png");
+	mFavoriteTexture.width = 20;
+	mFavoriteTexture.height = 20;
+}
+
 void Inventory::Update()
 {
 	for (int i = 0; i < mMaxSlots; i++) {
@@ -85,6 +92,10 @@ void Inventory::Update()
 			mItemStorage[mShowInfosIndex]->Sell();
 			RefreshInventory();
 		}
+		if (mActionsBtn[3].GetClickedBool()) {
+			mActionsBtn[3].SetClickedBool(false);
+			mItemStorage[mShowInfosIndex]->Favorite();
+		}
 	}
 }
 
@@ -97,6 +108,9 @@ void Inventory::Draw()
 		if (mItemStorage[i] != nullptr) {
 			if (mItemStorage[i]->GetAmount() > 1) {
 				DrawText(TextFormat("x%i", mItemStorage[i]->GetAmount()), mInventorySlots[i].GetButtonPosition().x + mInventorySlots[i].GetSize().x - MeasureText(TextFormat("x%i", mItemStorage[i]->GetAmount()), 20) - 4, mInventorySlots[i].GetButtonPosition().y + mInventorySlots[i].GetSize().y - 21, 20, BLACK);
+			}
+			if (mItemStorage[i]->GetIsFavorited()) {
+				DrawTexture(mFavoriteTexture, mInventorySlots[i].GetButtonPosition().x + 2, mInventorySlots[i].GetButtonPosition().y + 2, WHITE);
 			}
 		}
 	}
@@ -143,6 +157,7 @@ void Inventory::Unload()
 	for (int i = 0; i < mMaxSlots; i++) {
 		mInventorySlots[i].Unload();
 	}
+	UnloadTexture(mFavoriteTexture);
 }
 
 void Inventory::RefreshInventory()

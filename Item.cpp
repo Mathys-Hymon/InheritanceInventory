@@ -10,6 +10,8 @@ Item::Item()
     mPrice = 0;
     mAmount = 0;
     mTag = ItemTag::armor;
+
+    mIsFavorited = false;
 }
 
 Item::Item(std::string name, Texture2D image, std::string description, float weight, float price, int amount, ItemTag tag)
@@ -22,6 +24,8 @@ Item::Item(std::string name, Texture2D image, std::string description, float wei
     mPrice = price;
     mAmount = amount;
     mTag = tag;
+
+    mIsFavorited = false;
 }
 
 Item::~Item()
@@ -47,6 +51,7 @@ void Item::Sell()
 
 void Item::Favorite()
 {
+    mIsFavorited = !mIsFavorited;
 }
 
 void Item::Update()
@@ -92,4 +97,9 @@ Texture2D* Item::GetImage()
 int Item::GetAmount()
 {
     return mAmount;
+}
+
+bool Item::GetIsFavorited()
+{
+    return mIsFavorited;
 }

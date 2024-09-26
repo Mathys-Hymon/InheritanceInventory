@@ -24,6 +24,9 @@ GameManager::~GameManager()
 
 void GameManager::Load()
 {
+	for (int i = 0; i < 4; i++) {
+		mAllInventories[i].Load();
+	}
 	mArmorItems[0] = new Armor("Draconic Helmet", LoadTexture("resources/textures/helmet.png"), "Lorem Ipsum", 10, 10, 1, ItemTag::armor, 21, ClassType::heavy);
 	mArmorItems[1] = new Armor("Sacha's Jacket", LoadTexture("resources/textures/jacket.png"), "This is a super Jacket", 10, 10, 1, ItemTag::armor, 21, ClassType::heavy);
 	mArmorItems[2] = new Armor("Leggings", LoadTexture("resources/textures/pants.png"), "Good against Poison", 10, 10, 1, ItemTag::armor, 21, ClassType::heavy);

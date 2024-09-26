@@ -23,7 +23,7 @@ public:
 	ItemTag GetTag();
 	Texture2D* GetImage();
 	int GetAmount();
-
+	bool GetIsFavorited();
 
 protected:
 	std::string mName;
@@ -35,4 +35,5 @@ protected:
 	int mAmount;
 
 	Vector2 mSize;
+	bool mIsFavorited;
 };
