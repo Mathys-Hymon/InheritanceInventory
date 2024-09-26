@@ -3,7 +3,7 @@
 #include "originLocation.h"
 
 class CraftingMaterial :
-    public Item
+    public Item, public IStackable
 {
 public :
     CraftingMaterial();

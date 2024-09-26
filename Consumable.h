@@ -2,7 +2,8 @@
 #include "PotionEffect.h"
 #include "IStackable.h"
 
-class Consumable : public IStackable
+class Consumable : 
+	public Item, public IStackable
 {
 public:
 	Consumable();
