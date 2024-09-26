@@ -22,7 +22,6 @@ Item::Item(std::string name, Texture2D image, std::string description, float wei
     mPrice = price;
     mAmount = amount;
     mTag = tag;
-    ResetPosition();
 }
 
 Item::~Item()
@@ -47,17 +46,6 @@ void Item::Favorite()
 
 void Item::Update()
 {
-    mPosition.y += 100 * GetFrameTime();
-    if (mPosition.y > GetScreenHeight() + 50)
-    {
-        ResetPosition();
-    }
-    if (CheckCollisionPointRec(GetMousePosition(), { mPosition.x, mPosition.y, mSize.x, mSize.y })) {
-        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
-            mIsClicked = true;
-            ResetPosition();
-        }
-    }
 }
 
 void Item::Draw()
@@ -65,11 +53,6 @@ void Item::Draw()
     DrawTexture(mImage, 500, 500, WHITE);
 }
 
-void Item::ResetPosition()
-{
-    mPosition.x = GetRandomValue(50, GetScreenWidth() - 50);
-    mPosition.y = 50;
-}
 
 std::string Item::GetName()
 {
@@ -99,14 +82,4 @@ Texture2D* Item::GetImage()
 int Item::GetAmount()
 {
     return mAmount;
-}
-
-bool Item::GetIsClicked()
-{
-    return mIsClicked;
-}
-
-void Item::SetIsClicked(bool state)
-{
-    mIsClicked = state;
 }

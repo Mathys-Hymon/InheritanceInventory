@@ -44,6 +44,15 @@ void GameManager::Load()
 	mAllItems[7] = mCraftingItems[0];
 	mAllItems[8] = mCraftingItems[1];
 
+	for (int i = 0; i < 9; i++) {
+		for (int j = 0; j < 4; j++) {
+			if (mAllInventories[j].GetInventoryTag() == mAllItems[i]->GetTag()) {
+				mAllInventories[j].AddItemToInventory(mAllItems[i]);
+				std::cout << "oui";
+			}
+		}
+	}
+
 	for (int i = 0; i < 4; i++) {
 		mAllInventories[i].RefreshInventory();
 	}
@@ -70,19 +79,6 @@ void GameManager::Update()
 			}
 		}
 	}
-	else {
-		for (int i = 0; i < 9; i++) {
-			mAllItems[i]->Update();
-			if (mAllItems[i]->GetIsClicked()) {
-				mAllItems[i]->SetIsClicked(false);
-				for (int j = 0; j < 4; j++) {
-					if (mAllInventories[j].GetInventoryTag() == mAllItems[i]->GetTag()) {
-						mAllInventories[j].AddItemToInventory(mAllItems[i]);
-					}
-				}
-			}
-		}
-	}
 }
 
 void GameManager::Draw()
@@ -91,11 +87,6 @@ void GameManager::Draw()
 		mAllInventories[static_cast<int>(mInventoryTab)].Draw();
 		for (int i = 0; i < 4; i++) {
 			mInventoryButtons[i].Draw();
-		}
-	}
-	else {
-		for (int i = 0; i < 9; i++) {
-			mAllItems[i]->Draw();
 		}
 	}
 }

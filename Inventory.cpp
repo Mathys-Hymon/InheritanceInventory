@@ -75,11 +75,12 @@ void Inventory::AddItemToInventory(Item* itemToAdd)
 					}
 				}
 			}
-			if (mItemStorage[i] == nullptr) {
-				mItemStorage[i] = itemToAdd;
-				mInventorySlots[i].SetTexture(itemToAdd->GetImage(), 1);
-				RefreshInventory();
-			}
+		}
+		else {
+			mItemStorage[i] = itemToAdd;
+			mInventorySlots[i].SetTexture(itemToAdd->GetImage(), 1);
+			RefreshInventory();
+			break;
 		}
 	}
 }
