@@ -19,4 +19,5 @@ void CraftingMaterial::Craft()
 
 void CraftingMaterial::Add(int amount)
 {
+	mAmount += amount;
 }

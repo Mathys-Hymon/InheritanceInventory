@@ -15,7 +15,7 @@ Consumable::~Consumable()
 
 void Consumable::Add(int amount)
 {
-
+	mAmount += amount;
 }
 
 void Consumable::Use()
