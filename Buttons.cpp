@@ -143,6 +143,8 @@ void Buttons::SetTexture(Texture2D* texture, float size)
 	mSeeText = false;
 	mTextureSize = size;
 	mTexture = *texture;
+	mTexture.width = mSize.x;
+	mTexture.height = mSize.y;
 }
 
 void Buttons::SetText(std::string text)
@@ -232,5 +234,15 @@ void Buttons::Draw()
 void Buttons::Unload()
 {
 	UnloadTexture(mTexture);
+}
+
+Vector2 Buttons::GetButtonPosition()
+{
+	return mPosition;
+}
+
+Vector2 Buttons::GetSize()
+{
+	return mSize;
 }
 

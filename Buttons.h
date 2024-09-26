@@ -51,5 +51,7 @@ public:
     void Update();
     void Draw();
     void Unload();
+    Vector2 GetButtonPosition();
+    Vector2 GetSize();
 };
 
