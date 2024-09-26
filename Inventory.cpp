@@ -126,3 +126,8 @@ ItemTag Inventory::GetInventoryTag()
 {
 	return mInventoryTag;
 }
+
+void Inventory::SetInfoIndex(int newIndex)
+{
+	mShowInfosIndex = newIndex;
+}

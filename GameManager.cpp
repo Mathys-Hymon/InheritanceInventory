@@ -85,6 +85,7 @@ void GameManager::Update()
 				mButtonIndex = i;
 				mInventoryButtons[i].SetClickedBool(false);
 				mInventoryTab = static_cast<ItemTag>(i);
+				mAllInventories[static_cast<int>(mInventoryTab)].SetInfoIndex(0);
 			}
 		}
 	}
