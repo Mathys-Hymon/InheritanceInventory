@@ -13,7 +13,6 @@ public:
 	virtual void Inspect();
 	void Sell();
 	void Favorite();
-
 	void Update();
 	void Draw();
 	void ResetPosition();

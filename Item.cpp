@@ -9,6 +9,12 @@ Item::Item(std::string name, Texture2D image, std::string description, float wei
     ResetPosition();
     mSize = { (float)image.width, (float)image.height };
     mImage = image;
+    mName = name;
+    mImage = image;
+    mDescription = description;
+    mWeight = weight;
+    mPrice = price;
+    mAmount = amount;
 }
 
 Item::~Item()

@@ -133,6 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Armor.cpp" />
     <ClCompile Include="Buttons.cpp" />
     <ClCompile Include="Consumable.cpp" />
     <ClCompile Include="GameManager.cpp" />

@@ -17,15 +17,15 @@ GameManager::GameManager()
 	mInventoryButtons[3] = Buttons({ 770, 124, 215, 50 }, BLUE, "Craft Objects", BLACK, 25);
 	mInventoryButtons[mButtonIndex].SetButtonColor(DARKBLUE);
 
-	mArmorItems[0] = ;
-	mArmorItems[1] = ;
-	mArmorItems[2] = ;
-	mSword = ;
-	mBow = ;
-	mConsumableItems[0] = ;
-	mConsumableItems[1] = ;
-	mCraftingItems[0] = ;
-	mCraftingItems[1] = ;
+	mArmorItems[0] = {};
+	mArmorItems[1] = {};
+	mArmorItems[2] = {};
+	mSword = {};
+	mBow = {};
+	mConsumableItems[0] = {};
+	mConsumableItems[1] = {};
+	mCraftingItems[0] = {};
+	mCraftingItems[1] = {};
 
 	mAllItems[0] = mArmorItems[0];
 	mAllItems[1] = mArmorItems[1];

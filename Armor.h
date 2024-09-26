@@ -5,6 +5,9 @@
 class Armor :
     public Item
 {
+    Armor(std::string name, Texture2D image, std::string description, float weight, float price, int amount, float defense, ClassType armorType);
+    ~Armor();
+
 protected:
     float mDefense;
     ClassType mClass;
