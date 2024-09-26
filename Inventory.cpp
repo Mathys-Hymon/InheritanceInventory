@@ -59,6 +59,11 @@ void Inventory::Draw()
 	DrawRectangle(GetScreenWidth() / 2 - 460, GetScreenHeight() / 2 - 300, 920, 600, WHITE);
 	for (int i = 0; i < mMaxSlots; i++) {
 		mInventorySlots[i].Draw();
+		if (mItemStorage[i] != nullptr) {
+			if (mItemStorage[i]->GetAmount() > 1) {
+				DrawText(TextFormat("x%i", mItemStorage[i]->GetAmount()), mInventorySlots[i].GetButtonPosition().x + mInventorySlots[i].GetSize().x - MeasureText(TextFormat("x%i", mItemStorage[i]->GetAmount()), 20) - 4, mInventorySlots[i].GetButtonPosition().y + mInventorySlots[i].GetSize().y - 21, 20, BLACK);
+			}
+		}
 	}
 }
 
