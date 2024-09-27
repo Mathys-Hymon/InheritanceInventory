@@ -20,6 +20,7 @@ public:
 	ItemTag GetInventoryTag();
 	void SetInfoIndex(int newIndex);
 	void SetShowActionBtn(bool newState);
+	void SetShowItemInfos(bool newState);
 
 private:
 	int mMaxSlots;
@@ -28,6 +29,8 @@ private:
 	Item** mItemStorage;
 	ItemTag mInventoryTag;
 	int mShowInfosIndex;
+	int mSlotSelected;
+	bool mShowItemInfos;
 	Buttons mActionsBtn[4];
 	bool mShowActionBtn;
 	Texture2D mFavoriteTexture;

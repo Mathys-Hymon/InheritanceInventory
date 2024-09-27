@@ -91,6 +91,7 @@ void GameManager::Update()
 				mInventoryButtons[i].SetButtonColor(DARKBLUE);
 				mInventoryButtons[mButtonIndex].SetButtonColor(BLUE);
 				mAllInventories[mButtonIndex].SetShowActionBtn(false);
+				mAllInventories[mButtonIndex].SetShowItemInfos(false);
 				mButtonIndex = i;
 				mInventoryTab = static_cast<ItemTag>(i);
 				mAllInventories[static_cast<int>(mInventoryTab)].SetInfoIndex(0);

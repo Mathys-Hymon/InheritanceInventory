@@ -47,6 +47,8 @@ Inventory::Inventory(int maxSlots, int maxItemPerStack, ItemTag tag)
 	mActionsBtn[2] = Buttons({ 0, 0, 200, 50 }, WHITE, "Sell", BLACK, 20);
 	mActionsBtn[3] = Buttons({ 0, 0, 200, 50 }, WHITE, "Favorite", BLACK, 20);
 	mShowActionBtn = false;
+	mSlotSelected = 0;
+	mShowItemInfos = false;
 }
 
 Inventory::~Inventory()
@@ -66,13 +68,13 @@ void Inventory::Update()
 		mInventorySlots[i].Update();
 		if (mInventorySlots[i].GetClickedBool()) {
 			mInventorySlots[i].SetClickedBool(false);
-			if (mShowInfosIndex == i && mShowActionBtn) {
+			if (mSlotSelected == i && mShowActionBtn) {
 				mShowActionBtn = false;
 			}
 			else {
+				mSlotSelected = i;
 				mShowActionBtn = true;
 			}
-			mShowInfosIndex = i;
 			for (int j = 0; j < 4; j++) {
 				mActionsBtn[j].SetButtonPosition({ mInventorySlots[i].GetButtonPosition().x, mInventorySlots[i].GetButtonPosition().y + 80 + 50*j});
 			}
@@ -82,19 +84,33 @@ void Inventory::Update()
 		for (int i = 0; i < 4; i++) {
 			mActionsBtn[i].Update();
 		}
-		if (mActionsBtn[0].GetClickedBool()) {
+		if (mActionsBtn[0].GetClickedBool()) { //DROP BTN
 			mActionsBtn[0].SetClickedBool(false);
-			mItemStorage[mShowInfosIndex]->Drop(1);
+			mItemStorage[mSlotSelected]->Drop(1);
 			RefreshInventory();
 		}
-		if (mActionsBtn[2].GetClickedBool()) {
+		if (mActionsBtn[1].GetClickedBool()) { //INSPECT BTN
+			mActionsBtn[1].SetClickedBool(false);
+			if (mShowInfosIndex == mSlotSelected && mShowItemInfos) {
+				mShowItemInfos = false;
+			}
+			else {
+				mShowInfosIndex = mSlotSelected;
+				mShowItemInfos = true;
+			}
+			mShowActionBtn = false;
+			for (int i = 0; i < 4; i++) {
+				mActionsBtn[i].ResetTimer();
+			}
+		}
+		if (mActionsBtn[2].GetClickedBool()) { //SELL BTN
 			mActionsBtn[2].SetClickedBool(false);
-			mItemStorage[mShowInfosIndex]->Sell();
+			mItemStorage[mSlotSelected]->Sell();
 			RefreshInventory();
 		}
-		if (mActionsBtn[3].GetClickedBool()) {
+		if (mActionsBtn[3].GetClickedBool()) { //FAVORITE BTN
 			mActionsBtn[3].SetClickedBool(false);
-			mItemStorage[mShowInfosIndex]->Favorite();
+			mItemStorage[mSlotSelected]->Favorite();
 		}
 	}
 }
@@ -102,7 +118,6 @@ void Inventory::Update()
 void Inventory::Draw()
 {
 	DrawRectangle(GetScreenWidth() / 2 - 460, GetScreenHeight() / 2 - 300, 920, 600, WHITE);
-	DrawRectangleLinesEx({ 735, 400, 250, 250 }, 4, BLACK);
 	for (int i = 0; i < mMaxSlots; i++) {
 		mInventorySlots[i].Draw();
 		if (mItemStorage[i] != nullptr) {
@@ -114,7 +129,8 @@ void Inventory::Draw()
 			}
 		}
 	}
-	if (mItemStorage[mShowInfosIndex] != nullptr) {
+	if (mShowItemInfos && mItemStorage[mShowInfosIndex] != nullptr) {
+		DrawRectangleLinesEx({ 735, 400, 250, 250 }, 4, BLACK);
 		Texture2D texture = *mItemStorage[mShowInfosIndex]->GetImage();
 		texture.width = 250;
 		texture.height = 250;
@@ -195,4 +211,9 @@ void Inventory::SetInfoIndex(int newIndex)
 void Inventory::SetShowActionBtn(bool newState)
 {
 	mShowActionBtn = newState;
+}
+
+void Inventory::SetShowItemInfos(bool newState)
+{
+	mShowItemInfos = newState;
 }
