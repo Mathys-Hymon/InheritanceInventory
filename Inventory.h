@@ -4,6 +4,7 @@
 #include "IStackable.h"
 #include "ItemTag.h"
 #include "Buttons.h"
+#include <sstream>
 
 class Inventory
 {
@@ -21,6 +22,7 @@ public:
 	void SetInfoIndex(int newIndex);
 	void SetShowActionBtn(bool newState);
 	void SetShowItemInfos(bool newState);
+	void SetShowText(bool newState);
 
 private:
 	int mMaxSlots;
@@ -34,5 +36,11 @@ private:
 	Buttons mActionsBtn[4];
 	bool mShowActionBtn;
 	Texture2D mFavoriteTexture;
+
+	float mTextTimer;
+	float mOpacityMultiplier;
+	Color mTextColor;
+	std::string mText;
+	bool mShowText;
 };
 

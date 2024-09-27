@@ -8,6 +8,11 @@ Inventory::Inventory()
 	mInventorySlots = new Buttons[0];
 	mMaxItemPerStack = 0;
 	mInventoryTag = ItemTag::armor;
+	mTextTimer = 0;
+	mOpacityMultiplier = 0;
+	mTextColor = BLANK;
+	mText = "";
+	mShowText = false;
 }
 
 Inventory::Inventory(int maxSlots, int maxItemPerStack, ItemTag tag)
@@ -49,6 +54,14 @@ Inventory::Inventory(int maxSlots, int maxItemPerStack, ItemTag tag)
 	mShowActionBtn = false;
 	mSlotSelected = 0;
 	mShowItemInfos = false;
+
+	mFavoriteTexture = Texture2D();
+
+	mTextTimer = 3;
+	mOpacityMultiplier = 260 / mTextTimer;
+	mTextColor = RED;
+	mText = "Test";
+	mShowText = false;
 }
 
 Inventory::~Inventory()
@@ -87,6 +100,10 @@ void Inventory::Update()
 		if (mActionsBtn[0].GetClickedBool()) { //DROP BTN
 			mActionsBtn[0].SetClickedBool(false);
 			mItemStorage[mSlotSelected]->Drop(1);
+			mText = "You have dropped 1 " + mItemStorage[mSlotSelected]->GetName();
+			mTextColor = { 255, 0, 0, 255 };
+			mTextTimer = 3;
+			mShowText = true;
 			RefreshInventory();
 		}
 		if (mActionsBtn[1].GetClickedBool()) { //INSPECT BTN
@@ -106,11 +123,22 @@ void Inventory::Update()
 		if (mActionsBtn[2].GetClickedBool()) { //SELL BTN
 			mActionsBtn[2].SetClickedBool(false);
 			mItemStorage[mSlotSelected]->Sell();
+			mText = "You have sell for " + std::to_string(mItemStorage[mSlotSelected]->GetPrice()) + " bucks one " + mItemStorage[mSlotSelected]->GetName();
+			mTextColor = { 255, 0, 0, 255 };
+			mTextTimer = 3;
+			mShowText = true;
 			RefreshInventory();
 		}
 		if (mActionsBtn[3].GetClickedBool()) { //FAVORITE BTN
 			mActionsBtn[3].SetClickedBool(false);
 			mItemStorage[mSlotSelected]->Favorite();
+		}
+	}
+	if (mShowText) {
+		mTextTimer -= GetFrameTime();
+		mTextColor.a -= mOpacityMultiplier * GetFrameTime();
+		if (mTextTimer <= 0 || mTextColor.a < 10) {
+			mShowText = false;
 		}
 	}
 }
@@ -142,6 +170,9 @@ void Inventory::Draw()
 		for (int i = 0; i < 4; i++) {
 			mActionsBtn[i].Draw();
 		}
+	}
+	if (mShowText) {
+		DrawText(mText.c_str(), GetScreenWidth() / 2 - MeasureText(mText.c_str(), 30) / 2, 80, 30, mTextColor);
 	}
 }
 
@@ -216,4 +247,9 @@ void Inventory::SetShowActionBtn(bool newState)
 void Inventory::SetShowItemInfos(bool newState)
 {
 	mShowItemInfos = newState;
+}
+
+void Inventory::SetShowText(bool newState)
+{
+	mShowText = false;
 }

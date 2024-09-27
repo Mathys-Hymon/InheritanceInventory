@@ -61,7 +61,7 @@ void GameManager::Load()
 	mAllItems[14] = mCraftingItems[3];
 	mAllItems[15] = mCraftingItems[4];
 
-	for (int i = 0; i < 14; i++) {
+	for (int i = 0; i < sizeof(mAllItems) / sizeof(mAllItems[0]); i++) {
 		for (int j = 0; j < 4; j++) {
 			if (mAllInventories[j].GetInventoryTag() == mAllItems[i]->GetTag()) {
 				mAllInventories[j].AddItemToInventory(mAllItems[i]);
@@ -92,6 +92,7 @@ void GameManager::Update()
 				mInventoryButtons[mButtonIndex].SetButtonColor(BLUE);
 				mAllInventories[mButtonIndex].SetShowActionBtn(false);
 				mAllInventories[mButtonIndex].SetShowItemInfos(false);
+				mAllInventories[mButtonIndex].SetShowText(false);
 				mButtonIndex = i;
 				mInventoryTab = static_cast<ItemTag>(i);
 				mAllInventories[static_cast<int>(mInventoryTab)].SetInfoIndex(0);
