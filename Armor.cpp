@@ -9,3 +9,7 @@ Armor::Armor(std::string name, Texture2D image, std::string description, float w
 Armor::~Armor()
 {
 }
+
+void Armor::Equip()
+{
+}

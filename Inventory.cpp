@@ -51,6 +51,7 @@ Inventory::Inventory(int maxSlots, int maxItemPerStack, ItemTag tag)
 	mActionsBtn[1] = Buttons({ 0, 0, 200, 50 }, WHITE, "Inspect", BLACK, 20);
 	mActionsBtn[2] = Buttons({ 0, 0, 200, 50 }, WHITE, "Sell", BLACK, 20);
 	mActionsBtn[3] = Buttons({ 0, 0, 200, 50 }, WHITE, "Favorite", BLACK, 20);
+	mActionsBtn[4] = Buttons({ 0, 0, 200, 50 }, WHITE, "Equip", BLACK, 20);
 	mShowActionBtn = false;
 	mSlotSelected = 0;
 	mShowItemInfos = false;
@@ -88,7 +89,7 @@ void Inventory::Update()
 				mSlotSelected = i;
 				mShowActionBtn = true;
 			}
-			for (int j = 0; j < 4; j++) {
+			for (int j = 0; j < 5; j++) {
 				mActionsBtn[j].SetButtonPosition({ mInventorySlots[i].GetButtonPosition().x, mInventorySlots[i].GetButtonPosition().y + 80 + 50*j});
 			}
 		}
@@ -96,6 +97,9 @@ void Inventory::Update()
 	if (mShowActionBtn) {
 		for (int i = 0; i < 4; i++) {
 			mActionsBtn[i].Update();
+		}
+		if (mInventoryTag == ItemTag::armor || mInventoryTag == ItemTag::weapon) {
+			mActionsBtn[4].Update();
 		}
 		if (mActionsBtn[0].GetClickedBool()) { //DROP BTN
 			mActionsBtn[0].SetClickedBool(false);
@@ -116,7 +120,7 @@ void Inventory::Update()
 				mShowItemInfos = true;
 			}
 			mShowActionBtn = false;
-			for (int i = 0; i < 4; i++) {
+			for (int i = 0; i < 5; i++) {
 				mActionsBtn[i].ResetTimer();
 			}
 		}
@@ -127,11 +131,23 @@ void Inventory::Update()
 			mTextColor = { 255, 0, 0, 255 };
 			mTextTimer = 3;
 			mShowText = true;
+			money += mItemStorage[mSlotSelected]->GetPrice();
 			RefreshInventory();
 		}
 		if (mActionsBtn[3].GetClickedBool()) { //FAVORITE BTN
 			mActionsBtn[3].SetClickedBool(false);
 			mItemStorage[mSlotSelected]->Favorite();
+		}
+		if ((mInventoryTag == ItemTag::armor || mInventoryTag == ItemTag::weapon) && mActionsBtn[4].GetClickedBool()) { //EQUIP BTN
+			mActionsBtn[4].SetClickedBool(false);
+			IEquippable* item = dynamic_cast<IEquippable*>(mItemStorage[mSlotSelected]);
+			item->Equip();
+			mItemStorage[mSlotSelected]->Drop(1);
+			mText = "You have equiped " + mItemStorage[mSlotSelected]->GetName();
+			mTextColor = { 255, 0, 0, 255 };
+			mTextTimer = 3;
+			mShowText = true;
+			RefreshInventory();
 		}
 	}
 	if (mShowText) {
@@ -170,9 +186,12 @@ void Inventory::Draw()
 		for (int i = 0; i < 4; i++) {
 			mActionsBtn[i].Draw();
 		}
+		if (mInventoryTag == ItemTag::armor || mInventoryTag == ItemTag::weapon) {
+			mActionsBtn[4].Draw();
+		}
 	}
 	if (mShowText) {
-		DrawText(mText.c_str(), GetScreenWidth() / 2 - MeasureText(mText.c_str(), 30) / 2, 80, 30, mTextColor);
+		DrawText(mText.c_str(), GetScreenWidth() / 2 - MeasureText(mText.c_str(), 20) / 2, 80, 20, mTextColor);
 	}
 }
 

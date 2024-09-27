@@ -7,6 +7,7 @@
 #include "Consumable.h"
 #include "CraftingMaterial.h"
 #include "Buttons.h"
+#include "PlayerStats.h"
 class GameManager
 {
 public:

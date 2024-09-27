@@ -30,10 +30,10 @@ void GameManager::Load()
 
 	//Creating some Items just to debug
 
-	mArmorItems[0] = new Armor("Draconic Helmet", LoadTexture("resources/textures/helmet.png"), "Lorem Ipsum", 10, 10, 1, ItemTag::armor, 21, ClassType::heavy);
-	mArmorItems[1] = new Armor("Sacha's Jacket", LoadTexture("resources/textures/jacket.png"), "This is a super Jacket", 10, 10, 1, ItemTag::armor, 21, ClassType::heavy);
-	mArmorItems[2] = new Armor("Sacha's Jacket", LoadTexture("resources/textures/jacket.png"), "This is a super Jacket", 10, 10, 1, ItemTag::armor, 21, ClassType::heavy);
-	mArmorItems[3] = new Armor("Leggings", LoadTexture("resources/textures/pants.png"), "Good against Poison", 10, 10, 1, ItemTag::armor, 21, ClassType::heavy);
+	mArmorItems[0] = new Armor("Draconic Helmet", LoadTexture("resources/textures/helmet.png"), "Lorem Ipsum", 10, 10, 1, ItemTag::armor, 21, ClassType::Head);
+	mArmorItems[1] = new Armor("Sacha's Jacket", LoadTexture("resources/textures/jacket.png"), "This is a super Jacket", 10, 10, 1, ItemTag::armor, 21, ClassType::Torso);
+	mArmorItems[2] = new Armor("Sacha's Jacket", LoadTexture("resources/textures/jacket.png"), "This is a super Jacket", 10, 10, 1, ItemTag::armor, 21, ClassType::Torso);
+	mArmorItems[3] = new Armor("Leggings", LoadTexture("resources/textures/pants.png"), "Good against Poison", 10, 10, 1, ItemTag::armor, 21, ClassType::Legs);
 	mSword[0] = new Melee("Malenia's Sword", LoadTexture("resources/textures/catana.png"), "Malenia is really hard to beat", 2, 5, 1, ItemTag::weapon, 2, 3, 5);
 	mSword[1] = new Melee("Malenia's Sword", LoadTexture("resources/textures/catana.png"), "Malenia is really hard to beat", 2, 5, 1, ItemTag::weapon, 2, 3, 5);
 	mBow = new Ranged("Random Gun", LoadTexture("resources/textures/gun.png"), "Piou Piou", 4, 7, 1, 12, ItemTag::weapon, 2, 5);
@@ -111,6 +111,7 @@ void GameManager::Draw()
 		for (int i = 0; i < 4; i++) {
 			mInventoryButtons[i].Draw();
 		}
+		DrawText(TextFormat("Money : %i", money), 984 - MeasureText(TextFormat("Money : %i", money), 30), 80, 30, BLACK);
 	}
 }
 

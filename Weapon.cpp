@@ -18,3 +18,7 @@ float Weapon::Attack()
 {
     return mDamages;
 }
+
+void Weapon::Equip()
+{
+}

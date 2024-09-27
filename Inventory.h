@@ -2,8 +2,10 @@
 #include "raylib.h"
 #include "Item.h"
 #include "IStackable.h"
+#include "IEquippable.h"
 #include "ItemTag.h"
 #include "Buttons.h"
+#include "PlayerStats.h"
 #include <sstream>
 
 class Inventory
@@ -33,7 +35,7 @@ private:
 	int mShowInfosIndex;
 	int mSlotSelected;
 	bool mShowItemInfos;
-	Buttons mActionsBtn[4];
+	Buttons mActionsBtn[5];
 	bool mShowActionBtn;
 	Texture2D mFavoriteTexture;
 
