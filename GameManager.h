@@ -22,10 +22,10 @@ private:
 	Inventory mAllInventories[4];
 	Buttons mInventoryButtons[4];
 
-	Item* mAllItems[14];
+	Item* mAllItems[16];
 
-	Armor* mArmorItems[3];
-	Melee* mSword;
+	Armor* mArmorItems[4];
+	Melee* mSword[2];
 	Ranged* mBow;
 	Consumable* mConsumableItems[4];
 	CraftingMaterial* mCraftingItems[5];

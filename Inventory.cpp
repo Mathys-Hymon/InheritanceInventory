@@ -191,3 +191,8 @@ void Inventory::SetInfoIndex(int newIndex)
 {
 	mShowInfosIndex = newIndex;
 }
+
+void Inventory::SetShowActionBtn(bool newState)
+{
+	mShowActionBtn = newState;
+}

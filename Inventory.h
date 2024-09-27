@@ -19,6 +19,7 @@ public:
 	void RefreshInventory();
 	ItemTag GetInventoryTag();
 	void SetInfoIndex(int newIndex);
+	void SetShowActionBtn(bool newState);
 
 private:
 	int mMaxSlots;

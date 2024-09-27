@@ -29,8 +29,10 @@ void GameManager::Load()
 	}
 	mArmorItems[0] = new Armor("Draconic Helmet", LoadTexture("resources/textures/helmet.png"), "Lorem Ipsum", 10, 10, 1, ItemTag::armor, 21, ClassType::heavy);
 	mArmorItems[1] = new Armor("Sacha's Jacket", LoadTexture("resources/textures/jacket.png"), "This is a super Jacket", 10, 10, 1, ItemTag::armor, 21, ClassType::heavy);
-	mArmorItems[2] = new Armor("Leggings", LoadTexture("resources/textures/pants.png"), "Good against Poison", 10, 10, 1, ItemTag::armor, 21, ClassType::heavy);
-	mSword = new Melee("Malenia's Sword", LoadTexture("resources/textures/catana.png"), "Malenia is really hard to beat", 2, 5, 1, ItemTag::weapon, 2, 3, 5);
+	mArmorItems[2] = new Armor("Sacha's Jacket", LoadTexture("resources/textures/jacket.png"), "This is a super Jacket", 10, 10, 1, ItemTag::armor, 21, ClassType::heavy);
+	mArmorItems[3] = new Armor("Leggings", LoadTexture("resources/textures/pants.png"), "Good against Poison", 10, 10, 1, ItemTag::armor, 21, ClassType::heavy);
+	mSword[0] = new Melee("Malenia's Sword", LoadTexture("resources/textures/catana.png"), "Malenia is really hard to beat", 2, 5, 1, ItemTag::weapon, 2, 3, 5);
+	mSword[1] = new Melee("Malenia's Sword", LoadTexture("resources/textures/catana.png"), "Malenia is really hard to beat", 2, 5, 1, ItemTag::weapon, 2, 3, 5);
 	mBow = new Ranged("Random Gun", LoadTexture("resources/textures/gun.png"), "Piou Piou", 4, 7, 1, 12, ItemTag::weapon, 2, 5);
 	mConsumableItems[0] = new Consumable("Speed Soup", LoadTexture("resources/textures/soup.png"), "Miam", 77, 65, 50, ItemTag::consumable, EffectType::speed);
 	mConsumableItems[1] = new Consumable("Sushi", LoadTexture("resources/textures/sushi.png"), "Best dish of the world ?", 3, 2, 1, ItemTag::consumable, EffectType::heal);
@@ -45,17 +47,19 @@ void GameManager::Load()
 	mAllItems[0] = mArmorItems[0];
 	mAllItems[1] = mArmorItems[1];
 	mAllItems[2] = mArmorItems[2];
-	mAllItems[3] = mSword;
-	mAllItems[4] = mBow;
-	mAllItems[5] = mConsumableItems[0];
-	mAllItems[6] = mConsumableItems[1];
-	mAllItems[7] = mConsumableItems[2];
-	mAllItems[8] = mConsumableItems[3];
-	mAllItems[9] = mCraftingItems[0];
-	mAllItems[10] = mCraftingItems[1];
-	mAllItems[11] = mCraftingItems[2];
-	mAllItems[12] = mCraftingItems[3];
-	mAllItems[13] = mCraftingItems[4];
+	mAllItems[3] = mArmorItems[3];
+	mAllItems[4] = mSword[0];
+	mAllItems[5] = mSword[1];
+	mAllItems[6] = mBow;
+	mAllItems[7] = mConsumableItems[0];
+	mAllItems[8] = mConsumableItems[1];
+	mAllItems[9] = mConsumableItems[2];
+	mAllItems[10] = mConsumableItems[3];
+	mAllItems[11] = mCraftingItems[0];
+	mAllItems[12] = mCraftingItems[1];
+	mAllItems[13] = mCraftingItems[2];
+	mAllItems[14] = mCraftingItems[3];
+	mAllItems[15] = mCraftingItems[4];
 
 	for (int i = 0; i < 14; i++) {
 		for (int j = 0; j < 4; j++) {
@@ -83,10 +87,11 @@ void GameManager::Update()
 		for (int i = 0; i < 4; i++) {
 			mInventoryButtons[i].Update();
 			if (mInventoryButtons[i].GetClickedBool()) {
+				mInventoryButtons[i].SetClickedBool(false);
 				mInventoryButtons[i].SetButtonColor(DARKBLUE);
 				mInventoryButtons[mButtonIndex].SetButtonColor(BLUE);
+				mAllInventories[mButtonIndex].SetShowActionBtn(false);
 				mButtonIndex = i;
-				mInventoryButtons[i].SetClickedBool(false);
 				mInventoryTab = static_cast<ItemTag>(i);
 				mAllInventories[static_cast<int>(mInventoryTab)].SetInfoIndex(0);
 			}
@@ -109,7 +114,7 @@ void GameManager::Unload()
 	for (int i = 0; i < 4; i++) {
 		mAllInventories[i].Unload();
 	}
-	for (int j = 0; j < 14; j++) {
+	for (int j = 0; j < sizeof(mAllItems) / sizeof(mAllItems[0]); j++) {
 		mAllItems[j]->Unload();
 	}
 }
